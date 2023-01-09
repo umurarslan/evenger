@@ -12,7 +12,7 @@ Create EVE-NG network topology with EVE-NG API and excel file.
 ## Installation
 
 ```
-pip install edit4config
+pip install .....................................
 ```
 
 ---
