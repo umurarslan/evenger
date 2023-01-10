@@ -52,9 +52,10 @@ nokia_sros_cpm_node_dict = {
     'left': '500',
     'top': '200'
 }
-evenger_lab.add_node_sros_cpm(**node_dict)
+evenger_lab.add_node_sros_cpm(**nokia_sros_cpm_node_dict)
 ```
 
-
+```py
+# add custom node with eve-ng node json data
 
 ```
