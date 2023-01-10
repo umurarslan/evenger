@@ -184,7 +184,8 @@ evenger_lab.connect_node_to_node(
 
 ## Usage (Create Topology with Excel File)
 
-Check **examples/evenger_topology.xlsx** excel file in project repo. _LAB_INFO sheet must be filled for eve-ng access and other sheets are same as API functions use regarding eve-ng topology. 
+Check **examples/evenger_topology.xlsx** excel file in project repo. 
+"_LAB_INFO" sheet must be filled for eve-ng access and other sheets are same as API functions use regarding eve-ng topology. 
 
 ```py
 # create topology with excel file
