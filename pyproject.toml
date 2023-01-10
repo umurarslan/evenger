@@ -1,0 +1,25 @@
+[project]
+name = "evenger"
+version = "2023.01.09"
+description = "Create EVE-NG network topology with EVE-NG API and excel file"
+readme = "README.md"
+license = { file="LICENSE" }
+authors = [
+  {name="Umur Arslan"},
+]
+
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+requires-python = ">=3.9"
+dependencies = [
+    "pandas >= 1.5.2",
+    "requests >= 2.26.0",
+    "Jinja2 >= 3.0.1"
+]
+
+[project.urls]
+"Homepage" = "https://github.com/umurarslan/evenger"
