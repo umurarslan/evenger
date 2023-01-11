@@ -188,19 +188,21 @@ Check **examples/evenger_topology.xlsx** excel file in project repo.
 "_LAB_INFO" sheet must be filled for eve-ng access and other sheets are same as API functions use regarding eve-ng topology. 
 
 ```py
+# import Evenger only, no need create Evenger object
+from evenger import Evenger
+
 # create topology with excel file
-evenger_lab.excel_topology(
+Evenger.excel_topology(
     excel_filename=evenger_topology.xlsx,
     auto_start=auto_start
 )
 
 # create topology with excel and telnet configuration
-evenger_lab.excel_topology(
+Evenger.excel_topology(
     excel_filename=evenger_topology.xlsx,
     auto_start=auto_start,
     config_folder=my_config_folder,
     node_boot_time=150
 )
 ```
-
 
