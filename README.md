@@ -177,7 +177,7 @@ evenger_lab.connect_node_to_node(
 
     ```py
     # send configuration with telnet for eve-ng telnet supported node
-    evenger_lab.config_with_telnet(config_folder=my_config_folder)
+    evenger_lab.config_with_telnet(config_folder='my_config_folder')
     ```
 
 ---
