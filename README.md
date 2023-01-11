@@ -123,7 +123,7 @@ evenger_lab.add_network(**network_dict)
 network_dict_cloud = {
     'name': 'Bridge_Management',
     'type': 'pnet0',
-    'left': '500',
+    'left': '700',
     'top': '500'
 }
 evenger_lab.add_network(**network_dict_cloud)
