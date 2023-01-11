@@ -193,15 +193,15 @@ from evenger import Evenger
 
 # create topology with excel file
 Evenger.excel_topology(
-    excel_filename=evenger_topology.xlsx,
-    auto_start=auto_start
+    excel_filename='evenger_topology.xlsx',
+    auto_start='YES'
 )
 
 # create topology with excel and telnet configuration
 Evenger.excel_topology(
-    excel_filename=evenger_topology.xlsx,
-    auto_start=auto_start,
-    config_folder=my_config_folder,
+    excel_filename='evenger_topology.xlsx',
+    auto_start='YES',
+    config_folder='my_config_folder',
     node_boot_time=150
 )
 ```
