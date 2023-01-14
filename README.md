@@ -42,11 +42,19 @@ evenger_lab.add_lab()
 ```
 
 ```py
-# add bridge (network) to topology
+# add regular bridge (network) to topology (type: bridge)
 evenger_lab.add_network(
     name='Bridge_INTERNAL',
     type='bridge',
     left='200',
+    top='200'
+)
+
+# add cloud bridge (network) to topology (type: pnet0)
+evenger_lab.add_network(
+    name='Bridge_MANAGEMENT',
+    type='pnet0',
+    left='700',
     top='200'
 )
 ```
@@ -107,26 +115,6 @@ cisco_xrv_json_text='''
 }
 '''
 evenger_lab.add_node_custom(custom_json_text=cisco_xrv_json_text)
-```
-
-```py
-# add bridge/network (type: bridge)
-network_dict = {
-    'name': 'Bridge_Internal',
-    'type': 'bridge',
-    'left': '500',
-    'top': '500'
-}
-evenger_lab.add_network(**network_dict)
-
-# add cloud bridge/network (e.g. type: pnet0)
-network_dict_cloud = {
-    'name': 'Bridge_Management',
-    'type': 'pnet0',
-    'left': '700',
-    'top': '500'
-}
-evenger_lab.add_network(**network_dict_cloud)
 ```
 
 ---
