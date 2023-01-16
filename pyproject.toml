@@ -1,6 +1,6 @@
 [project]
 name = "evenger"
-version = "2023.01.11"
+version = "2023.01.16"
 description = "Create EVE-NG network topology with EVE-NG API and excel file"
 readme = "README.md"
 license = { file="LICENSE" }
@@ -24,3 +24,6 @@ dependencies = [
 
 [project.urls]
 "Homepage" = "https://github.com/umurarslan/evenger"
+
+[project.scripts]
+evenger = "evenger.evenger:run_cli"
