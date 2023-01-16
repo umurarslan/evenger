@@ -175,22 +175,54 @@ evenger_lab.connect_node_to_node(
 Check **examples/evenger_topology.xlsx** excel file in project repo. 
 "_LAB_INFO" sheet must be filled for eve-ng access and other sheets are same as API functions use regarding eve-ng topology. 
 
-```py
-# import Evenger only, no need create Evenger object
-from evenger import Evenger
+- Run from CLI:
 
-# create topology with excel file
-Evenger.excel_topology(
-    excel_filename='evenger_topology.xlsx',
-    auto_start='YES'
-)
+    > With pip installation, **evenger** command is already added to system path.
+    
+    Help:
+    ```
+    PS C:\Users\alg\desktop> evenger -h
+    usage: evenger.py [-h] [--excel_file EXCEL_FILE] [--config_folder CONFIG_FOLDER] [--auto_start AUTO_START] [--boot_time BOOT_TIME]
 
-# create topology with excel and telnet configuration
-Evenger.excel_topology(
-    excel_filename='evenger_topology.xlsx',
-    auto_start='YES',
-    config_folder='my_config_folder',
-    node_boot_time=150
-)
-```
+    optional arguments:
+      -h, --help            show this help message and exit
+      --excel_file EXCEL_FILE
+                            excel file path [e.g. my_evenger_topology.xlsx] (default: --excel_file=evenger_topology.xlsx)
+      --config_folder CONFIG_FOLDER
+                            config folder path [e.g. my_configs_folder] (OPTIONAL default: --config_folder=configs)
+      --auto_start AUTO_START
+                            auto start [YES or NO] (default: --auto_start=YES)
+      --boot_time BOOT_TIME
+                            node boot time in seconds [e.g. 150] (default: --boot_time=180)
+    ```
+    
+    Run without config file:
+    ```
+    PS C:\Users\alg\desktop> evenger --excel_file my_evenger_topology.xlsx
+    ```
+
+    Run with config files folder:
+    ```
+    PS C:\Users\alg\desktop> evenger --excel_file my_evenger_topology.xlsx --config_folder my_configs_folder
+    ```
+    
+- Run from python code:
+    ```py
+    # import Evenger only, no need create Evenger object
+    from evenger import Evenger
+
+    # create topology with excel file
+    Evenger.excel_topology(
+        excel_filename='evenger_topology.xlsx',
+        auto_start='YES'
+    )
+
+    # create topology with excel and telnet configuration
+    Evenger.excel_topology(
+        excel_filename='evenger_topology.xlsx',
+        auto_start='YES',
+        config_folder='my_config_folder',
+        node_boot_time=150
+    )
+    ```
 
