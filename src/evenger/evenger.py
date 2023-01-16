@@ -1,8 +1,9 @@
 '''
 Evenger create EVE-NG network topology with EVE-NG API and excel file
 
-Version: 2023.01.09
+Version: 2023.01.16
 '''
+import argparse
 import json
 import logging
 import os
@@ -13,7 +14,6 @@ from dataclasses import dataclass
 import pandas as pd
 import requests
 from jinja2 import Template
-
 
 # LOG OPTIONS
 logging.basicConfig(
@@ -615,3 +615,71 @@ class Evenger:
         except Exception as e:
             logging.error(
                 f'Jump_server {jump_server_name} vnc host/port failed: {e}')
+
+
+def run_cli():
+    ''' run evenger excel topology from clie '''
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        '--excel_file',
+        help='excel file path [e.g. my_evenger_topology.xlsx] (default: --excel_file=evenger_topology.xlsx)')
+    parser.add_argument(
+        '--config_folder',
+        help='config folder path [e.g. my_configs_folder] (OPTIONAL default: --config_folder=configs)')
+    parser.add_argument(
+        '--auto_start',
+        help='auto start [YES or NO] (default: --auto_start=YES)')
+    parser.add_argument(
+        '--boot_time',
+        type=int,
+        help='node boot time in seconds [e.g. 150] (default: --boot_time=180)')
+
+    args = parser.parse_args()
+
+    if args.excel_file:
+        excel_file = args.excel_file
+    else:
+        excel_file = 'evenger_topology.xlsx'
+    if not os.path.exists(excel_file):
+        logging.error(f'Excel file <{excel_file}> not found!')
+        raise SystemExit
+
+    if args.config_folder:
+        config_folder = args.config_folder
+        if not os.path.exists(config_folder):
+            logging.error(f'Config folder <{config_folder}> not found!')
+            raise SystemExit
+    else:
+        config_folder = 'configs'
+        if not os.path.exists(config_folder):
+            config_folder = ''
+
+    if args.auto_start:
+        auto_start = args.auto_start
+    else:
+        auto_start = 'YES'
+    if auto_start != 'YES' and auto_start != 'NO':
+        logging.error(f'Auto start <{auto_start}> must be YES or NO!')
+        raise SystemExit
+
+    if args.boot_time:
+        boot_time = args.boot_time
+    else:
+        boot_time = 180
+    if not isinstance(boot_time, int):
+        logging.error(f'Boot time <{boot_time}> must be integer!')
+        raise SystemExit
+
+    logging.info(
+        f'CLI args: {excel_file=}, {config_folder=}, {auto_start=}, {boot_time=}')
+
+    Evenger.excel_topology(
+        excel_filename=excel_file,
+        auto_start=auto_start,
+        config_folder=config_folder,
+        node_boot_time=boot_time
+    )
+
+
+if __name__ == "__main__":
+    run_cli()
