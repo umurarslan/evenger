@@ -148,11 +148,12 @@ evenger_lab.connect_node_to_node(
 - Add cli configuration to node text file with **<_EXPECT: ***expected-string***>** which depends on node cli. Below example for Nokia SROS:
 
     ```
+    _TIMEOUT: 3
     _EXPECT: ogin
     admin
     _EXPECT: assword
     admin
-    _EXPECT: #
+    _EXPECT: >config
     configure
         system
             name "7750_test_1_system_name"
@@ -161,8 +162,22 @@ evenger_lab.connect_node_to_node(
     logout
     ```
 
-- After add node configs to config folder (my_config_folder/7750_test_1.txt, my_config_folder/7750_test_2.txt etc.) run below python code:
-
+- After that add node configs to config folder (my_config_folder/7750_test_1.txt, my_config_folder/7750_test_2.txt etc.) run below python code:
+    ```py
+    # import Evenger
+    from evenger import Evenger
+    ```
+    
+    ```py
+    # define Evenger object
+    evenger_lab = Evenger(
+        eveng_server_url='http://172.18.18.18',
+        username='admin',
+        password='eve',
+        lab_path='my_lab_folder/my_lab'
+    )
+    ```
+    
     ```py
     # send configuration with telnet for eve-ng telnet supported node
     evenger_lab.config_with_telnet(config_folder='my_config_folder')
@@ -195,6 +210,8 @@ Check **examples/evenger_topology.xlsx** excel file in project repo.
       --boot_time BOOT_TIME
                             node boot time in seconds [e.g. 150] (default: --boot_time=180)
     ```
+    
+    > Run **evenger** command in working directory which includes excel file and/or config folder
     
     Run without config file:
     ```
